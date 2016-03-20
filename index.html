@@ -1,18 +1,32 @@
 <html>
 	<head>
 		<script src="js/mail-generator.js"></script>
+		<title>Web Mail For Joo</title>
 		<link href="css/style.css" rel="stylesheet" media="screen">
     <script>
       window.onload = function(){
         // ALL OF YOUR JAVASCRIPT CODE SHOULD GO HERE. 
         // We have to use window.onload so your JavaScript doesn't execute until the page has loaded and all HTML has been downloaded to your browser
-        
+        window.setInterval(getNewMessage, 1000);
+                  
       };
+
+
     </script>
 	</head>
 	<body>
-		<div class="container" id="main">
-			Build Me!
+		<div>
+			<h1>Your GeeMail Account</h1>
 		</div>
+
+		<div class="container" id="main">
+			<div class="whatForm">
+				<p>Date:</p>
+				<p>Sender</p>
+				<p>Subject</p>
+			</div>
+							
+			</div>
+
 	</body>
 </html>
