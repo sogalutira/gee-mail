@@ -10,8 +10,11 @@
         window.setInterval(getNewMessage, 1000);
 
         	var mailLine = [];
+        	//random sender variable
         	var contact = sender[Math.floor(Math.random() * sender.length)];
+        	//random subject line variable
         	var subj = subject[Math.floor(Math.random() * subject.length)];
+        	//random body message variable
         	var bod = body[Math.floor(Math.random() * body.length)];
 				
         	function messages(email){
@@ -20,9 +23,8 @@
   				console.log(mailLine);
 				}
   				return email;
-  				
-			}
-			messages(contact);
+  			}
+			messages(contact); //randomly selecting a sender function
 
 			var mailSub = [];
 			function sub(emailSub){
@@ -30,14 +32,66 @@
   				mailSub.push(subj );
   				console.log(mailSub);
 				}
-  				return emailSub;
-  				
+  				return emailSub;		
 			}
-			messages(subj);
+			messages(subj); //randomly selecting a subject line function
 
-		document.getElementById('sender').innerHTML = messages(contact);
-		document.getElementById('subject').innerHTML = messages(subj);
-			
+			function getRandomDate(){
+				var year = 2013;
+				var month = Math.floor(Math.random() * 12) + 1;
+				var day = Math.floor(Math.random() * 30) + 1;
+				var hours = Math.floor(Math.random() * 12) + 1;
+				var minutes = Math.floor(Math.random() * 59) + 1;
+				return new Date(year, month, day, hours, minutes);
+			}
+			getRandomDate();	//random dates with time
+
+			var mdyDate = [];
+			var year = 2013;
+			var monthWord = ['Jan', 'Feb', 'Mar', 'April', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
+			var month = monthWord[Math.floor(Math.random() * monthWord.length)];
+			var day = Math.floor(Math.random() * 30) + 1;
+			var mmddyy = [month + " " + day + " " + year];
+			function shortDate(d){
+				for (var i = 0; i < 0; i++){
+				mdyDate.push(mmddyy);
+				console.log(mdyDate);	
+				}return d;	
+			}
+			shortDate(mmddyy);	//short date for collapsed accordion view
+				
+		var names = document.getElementsByClassName('sender');
+			function nameClass(name){
+				for(var i=0;i<names.length;i++){
+   				names[i].innerHTML = contact;
+				}
+			}
+			nameClass(contact);		//setting the function for a random sender to iterate in the html body
+
+		var mailText = document.getElementsByClassName('bodyText');
+			function bodClass(body){
+				for(var i=0;i<mailText.length;i++){
+   				mailText[i].innerHTML = bod;
+				}
+			}	
+			bodClass(bod);		//setting a function for a random email message to iterate in the html body
+		
+		var subjText = document.getElementsByClassName('subject');
+			function subjClass(sub){
+				for(var i=0;i<subjClass.length;i++){
+   				subjText[i].innerHTML = subj;
+				}
+			}
+			subjClass(subj);	//setting a function for a random subject line to iterate in the html body
+ 
+ 		var dateText = document.getElementsByClassName('date');
+			function dateClass(days){
+				for(var i=0;i<dateClass.length;i++){
+   				dateText[i].innerHTML = mmddyy;
+				}
+			}
+			dateClass(mmddyy);		//setting a function for a random short hand date to iterate in the html body
+
 
 		};
 
@@ -47,51 +101,19 @@
 		<div>
 			<h1>Your GeeMail Account</h1>
 		</div>
-	
 
 		<div class="mails container" id="main">
 			<div class="mailCurrent">
-				<div class="itemRow">
-				
-					<p>From: <span id="sender"> </span></p>
-					
-					<p>Subject: <span id="subject"> </span></p>
-					
-						<p>Date: <span id="date">date</span> </p>
-					
-				
-				<input class="toggle-box" id="header1" type="checkbox" >
-				<label for="header1">View Message</label>
-				<div><p id="messages">Lorem ipsum dolor sit amet, consectetuer adipiscing.</p></div>
-				
-					</div>
-				</div>
-
-				<div class="mailCurrent">
-				<div class="itemRow">
-					<div class="senders">
-					<p>From: <span id="sender"> sender </span></p>
-					</div>
-					<div class="subjects">
-						<p>Subject: <span id="subject">subject</span></p>
-					</div>
-					<div class="dates">
-						<p>Date: <span id="date">date</span> </p>
-					</div>
-				</div>
-				
+				<div class="itemRow">	
+					<p>From: <span class="sender"> </span></p>
+					<p>Subject: <span class="subject"> </span></p>
+					<p>Date: <span class="date"> </span> </p>
+					<p class="sender"></p>
+					<p class="bodyText"></p>
+						
+				</div>	
 			</div>
-		
-
-		<!-- 				<p>Date: <span id="date">date</span> </p>
-						<p>Sender: <span id="sender">sender</span></p>
-						<p>Subject: <span id="subject">subject</span></p>
-				</div>
-		<div class="message">
-			<p id="messages">New message</p>
-							
-		</div> -->
-
+		</div>
 
 	</body>
 </html>
