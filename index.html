@@ -16,7 +16,8 @@
         	var subj = subject[Math.floor(Math.random() * subject.length)];
         	//random body message variable
         	var bod = body[Math.floor(Math.random() * body.length)];
-				
+
+			//randomly selecting a sender function	
         	function messages(email){
   				for (var i = 0; i < 1; i++){
   				mailLine.push(contact);
@@ -24,8 +25,9 @@
 				}
   				return email;
   			}
-			messages(contact); //randomly selecting a sender function
+			messages(contact); 
 
+			//randomly selecting a subject line function
 			var mailSub = [];
 			function sub(emailSub){
   				for (var i = 0; i < 1; i++){
@@ -34,8 +36,9 @@
 				}
   				return emailSub;		
 			}
-			messages(subj); //randomly selecting a subject line function
+			messages(subj); 
 
+			//random dates with time
 			function getRandomDate(){
 				var year = 2013;
 				var month = Math.floor(Math.random() * 12) + 1;
@@ -44,8 +47,9 @@
 				var minutes = Math.floor(Math.random() * 59) + 1;
 				return new Date(year, month, day, hours, minutes);
 			}
-			getRandomDate();	//random dates with time
+			getRandomDate();
 
+			//short date for collapsed accordion view
 			var mdyDate = [];
 			var year = 2013;
 			var monthWord = ['Jan', 'Feb', 'Mar', 'April', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
@@ -58,40 +62,52 @@
 				console.log(mdyDate);	
 				}return d;	
 			}
-			shortDate(mmddyy);	//short date for collapsed accordion view
-				
+			shortDate(mmddyy);
+
+		//setting the function for a random sender to iterate in the html body				
 		var names = document.getElementsByClassName('sender');
 			function nameClass(name){
 				for(var i=0;i<names.length;i++){
    				names[i].innerHTML = contact;
 				}
 			}
-			nameClass(contact);		//setting the function for a random sender to iterate in the html body
+			nameClass(contact);	
 
+		//setting a function for a random email message to iterate in the html body
 		var mailText = document.getElementsByClassName('bodyText');
 			function bodClass(body){
 				for(var i=0;i<mailText.length;i++){
    				mailText[i].innerHTML = bod;
 				}
 			}	
-			bodClass(bod);		//setting a function for a random email message to iterate in the html body
-		
+			bodClass(bod);		
+
+		//setting a function for a random subject line to iterate in the html body
 		var subjText = document.getElementsByClassName('subject');
 			function subjClass(sub){
 				for(var i=0;i<subjClass.length;i++){
    				subjText[i].innerHTML = subj;
 				}
 			}
-			subjClass(subj);	//setting a function for a random subject line to iterate in the html body
- 
+			subjClass(subj);	
+
+ 		//setting a function for a random short hand date to iterate in the html body
  		var dateText = document.getElementsByClassName('date');
 			function dateClass(days){
 				for(var i=0;i<dateClass.length;i++){
    				dateText[i].innerHTML = mmddyy;
 				}
 			}
-			dateClass(mmddyy);		//setting a function for a random short hand date to iterate in the html body
+			dateClass(mmddyy);
 
+		//function to iterate random long date in html
+		var dateLong = document.getElementsByClassName('dateLong');
+			function dateLongClass(date){
+				for(var i=0;i<dateLong.length;i++){
+   				dateLong[i].innerHTML = getRandomDate();
+				}
+			}	
+			dateLongClass(getRandomDate()); 	
 
 		};
 
@@ -110,6 +126,7 @@
 					<p>Date: <span class="date"> </span> </p>
 					<p class="sender"></p>
 					<p class="bodyText"></p>
+					<p class="dateLong"></p>
 						
 				</div>	
 			</div>
