@@ -7,32 +7,91 @@
       window.onload = function(){
         // ALL OF YOUR JAVASCRIPT CODE SHOULD GO HERE. 
         // We have to use window.onload so your JavaScript doesn't execute until the page has loaded and all HTML has been downloaded to your browser
-        setInterval(getNewMessage, 1000);
-      document.getElementById("date").innerHTML = getRandomDate();
-        document.getElementById("sender").innerHTML = getRandomElement(sender);
-        document.getElementById("messages").innerHTML = getRandomElement(body);
-        document.getElementById("subject").innerHTML = getRandomElement(subject);
-    
-      
+        window.setInterval(getNewMessage, 1000);
+
+        	var mailLine = [];
+        	var contact = sender[Math.floor(Math.random() * sender.length)];
+        	var subj = subject[Math.floor(Math.random() * subject.length)];
+        	var bod = body[Math.floor(Math.random() * body.length)];
+				
+        	function messages(email){
+  				for (var i = 0; i < 1; i++){
+  				mailLine.push(contact);
+  				console.log(mailLine);
+				}
+  				return email;
+  				
+			}
+			messages(contact);
+
+			var mailSub = [];
+			function sub(emailSub){
+  				for (var i = 0; i < 1; i++){
+  				mailSub.push(subj );
+  				console.log(mailSub);
+				}
+  				return emailSub;
+  				
+			}
+			messages(subj);
+
+		document.getElementById('sender').innerHTML = messages(contact);
+		document.getElementById('subject').innerHTML = messages(subj);
+			
 
 		};
+
     </script>
 	</head>
 	<body>
 		<div>
 			<h1>Your GeeMail Account</h1>
 		</div>
+	
 
-		<div class="container" id="main">
-			<div class="whatForm">
-				<p>Date: <span id="date">date</span> </p>
-				<p>Sender: <span id="sender">sender</span></p>
-				<p>Subject: <span id="subject">subject</span></p>
+		<div class="mails container" id="main">
+			<div class="mailCurrent">
+				<div class="itemRow">
+				
+					<p>From: <span id="sender"> </span></p>
+					
+					<p>Subject: <span id="subject"> </span></p>
+					
+						<p>Date: <span id="date">date</span> </p>
+					
+				
+				<input class="toggle-box" id="header1" type="checkbox" >
+				<label for="header1">View Message</label>
+				<div><p id="messages">Lorem ipsum dolor sit amet, consectetuer adipiscing.</p></div>
+				
+					</div>
+				</div>
+
+				<div class="mailCurrent">
+				<div class="itemRow">
+					<div class="senders">
+					<p>From: <span id="sender"> sender </span></p>
+					</div>
+					<div class="subjects">
+						<p>Subject: <span id="subject">subject</span></p>
+					</div>
+					<div class="dates">
+						<p>Date: <span id="date">date</span> </p>
+					</div>
+				</div>
+				
 			</div>
+		
+
+		<!-- 				<p>Date: <span id="date">date</span> </p>
+						<p>Sender: <span id="sender">sender</span></p>
+						<p>Subject: <span id="subject">subject</span></p>
+				</div>
 		<div class="message">
 			<p id="messages">New message</p>
 							
-		</div>
+		</div> -->
+
 
 	</body>
 </html>
