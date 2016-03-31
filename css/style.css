@@ -1,26 +1,13 @@
-.toggle-box {
-  display: none;
+div.email{
+	
 }
 
-.toggle-box + label {
-  cursor: pointer;
-  display: block;
-  font-weight: bold;
-  background-color: lightgray;
-  line-height: 21px;
-  margin-bottom: 5px;
+div.body{
+	display: none;
 }
 
-.toggle-box + label + div {
-  display: none;
-  margin-bottom: 10px;
+div.body.show{
+	display: block;
 }
-
-.toggle-box:checked + label + div {
-  display: block;
-  background-color: lightgray;
-  margin: 0;
-}
-
 
 

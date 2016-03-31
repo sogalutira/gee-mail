@@ -7,7 +7,31 @@
       window.onload = function(){
         // ALL OF YOUR JAVASCRIPT CODE SHOULD GO HERE. 
         // We have to use window.onload so your JavaScript doesn't execute until the page has loaded and all HTML has been downloaded to your browser
-        window.setInterval(getNewMessage, 1000);
+       
+      
+
+
+        
+
+        var headerDiv = document.createElement('div');
+        headerDiv.className = "heading";
+        var header = document.createElement('h1');
+        var headerText = document.createTextNode("Your GeeMail Account");
+        header.appendChild(headerText);
+        headerDiv.appendChild(header);
+        document.body.appendChild(headerDiv);
+
+        var inboxDiv = document.createElement('div');
+        inboxDiv.id = "inbox";
+        var inboxText = document.createTextNode("Inbox: ");
+        inboxSpan = document.createElement('span');
+        inboxSpan.id = "count";
+        inboxSpan.appendChild(inboxText);
+        inboxDiv.appendChild(inboxSpan);
+        document.body.appendChild(inboxDiv);
+
+        var mainWrap = document.createElement('div');
+        mainWrap.id = "mainWrap";
 
         function newEmail(mail){
         	for (var i=0; i < mail.length; i++){
@@ -17,60 +41,115 @@
         		var date = mail[i].date;
         		var body = mail[i].body;
 
-        		var mainContainer = document.getElementById("mainWrap");
-        		mainContainer = document.createElement('div');
-        		mainContainer.id ="main";
-        		mainWrap.appendChild(mainContainer);
-
-        		var senderElement = document.createElement('div');
-        		senderElement.id = "sender";
-        		senderElement.innerHTML = mail[i].sender;
         		
+        		var mainContainer = document.createElement('div');
+        		mainContainer.className ="email";
+        		mainWrap.appendChild(mainContainer);
+                document.body.appendChild(mainWrap);
+       		
+        		var senderElement = document.createElement('div');
+        		senderElement.className = "sender";
+        		senderElement.innerHTML = sender;
+        		mainContainer.appendChild(senderElement);
 
         		var subjectElement = document.createElement('div');
-        		subjectElement.id = "subject";
-        		subjectElement.innerHTML = mail[i].subject;
-        		
+        		subjectElement.className = "subject";
+        		subjectElement.innerHTML = subject;
+        		mainContainer.appendChild(subjectElement);
 
-        		var dateElement = document.createElement('div');
-        		dateElement.id = "date";
-        		dateElement.innerHTML = mail[i].date;
-        		
-
-        		var topEmail = document.createElement('div');
-        		topEmail.id = "topEmail";
-        		topEmail.appendChild(senderElement);
-        		topEmail.appendChild(subjectElement);
-        		topEmail.appendChild(dateElement);
-        		mainContainer.appendChild(topEmail);
+                var dateElement = document.createElement('div');
+                dateElement.className = "date";
+                dateElement.innerHTML = date;
+                mainContainer.appendChild(dateElement);
 
         		var bodyElement = document.createElement('div');
-        		bodyElement.id = "body";
-        		bodyElement.innerHTML = mail[i].body;
-        				
+        		bodyElement.className = "body";
+        		bodyElement.innerHTML = body;
+        		mainContainer.appendChild(bodyElement);
+
+
+                //Event Listener below
+
+
+
+
+
+                // var bodyText = document.getElementsByClassName('topEmail');
+                // for (var j =0; j < bodyText.length; j++){
+                //     bodyText[j].addEventListener('click', showBody);
+                // }
+
+                // function showBody(event){ 
+                //     var showBody = this.querySelectorAll(".body")[0]; //.body to get all elements with class = body in the CSS file. THIS refers to elements (showBodyText). Function will go through all indexes starting with [0].
+
+                //     if(showBody.classList.contains('show')=== false){ //Refer to the CSS file. Will add or remove show to display the body message.
+                //         return showBody.classList.add('show');
+                //     } else {
+                //             return showBody.classList.remove('show');
+                //         }
+                // }
+
+
+
+        var emailMessages = document.getElementsByClassName('email');
+        for (var j = 0; j < emailMessages.length; j++){
+            emailMessages[j].addEventListener('click', showMessage);
+        }
+        function showMessage(event){
+            var showBody = this.querySelectorAll('.body')[0]; //'this' refers to the emailMessages[j] variable or the Div with the class name 'main'.
+            if (showBody.classList.contains('show')===false){
+                return showBody.classList.add('show');
+            } else {
+                return showBody.classList.remove('show');
+            }
 
         }
-        return mail;
+
+
+
+
+
+            }
+
+                         
         }
         newEmail(geemails);
 
 
-       
+        //inbox counter
+        var inboxCount = document.getElementById('count');
+        inboxCount = geemails.length; //want the length of geemails counted
+        var totalCount = document.createTextNode(inboxCount); 
+        count.appendChild(totalCount); //append the total count to the inbox span
+   
+
+
+
         
 
+        };
+       
 
-		};
+  
+                // function showBody(){
+                   
+                //     for (var i = 0; i < body.length; i++){
+                //    if(document.getElementsByClassName("body").style.display === 'none'){
+                //         document.getElementsByClassName("body").style.display = 'block';
+                //         } else{
+                //         document.getElementsByClassName("body").style.display = 'none';
+
+                //         }
+                //     }
+               
+
+                //   } 
+
+		
 
     </script>
 	</head>
 	<body>
-		<div class="heading">
-			<h1>Your GeeMail Account</h1>
-		</div>
-			<div id="mainWrap">						
-				</div>	
-			</div>
-		</div>
-
+    		
 	</body>
 </html>
