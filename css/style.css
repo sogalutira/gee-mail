@@ -1,7 +1,6 @@
-div.email{
-	
+div.sender, div.subject, div.date{
+	display: inline;
 }
-
 div.body{
 	display: none;
 }

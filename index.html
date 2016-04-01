@@ -8,11 +8,6 @@
         // ALL OF YOUR JAVASCRIPT CODE SHOULD GO HERE. 
         // We have to use window.onload so your JavaScript doesn't execute until the page has loaded and all HTML has been downloaded to your browser
        
-      
-
-
-        
-
         var headerDiv = document.createElement('div');
         headerDiv.className = "heading";
         var header = document.createElement('h1');
@@ -41,7 +36,6 @@
         		var date = mail[i].date;
         		var body = mail[i].body;
 
-        		
         		var mainContainer = document.createElement('div');
         		mainContainer.className ="email";
         		mainWrap.appendChild(mainContainer);
@@ -67,86 +61,90 @@
         		bodyElement.innerHTML = body;
         		mainContainer.appendChild(bodyElement);
 
-
-                //Event Listener below
-
-
-
-
-
-                // var bodyText = document.getElementsByClassName('topEmail');
-                // for (var j =0; j < bodyText.length; j++){
-                //     bodyText[j].addEventListener('click', showBody);
-                // }
-
-                // function showBody(event){ 
-                //     var showBody = this.querySelectorAll(".body")[0]; //.body to get all elements with class = body in the CSS file. THIS refers to elements (showBodyText). Function will go through all indexes starting with [0].
-
-                //     if(showBody.classList.contains('show')=== false){ //Refer to the CSS file. Will add or remove show to display the body message.
-                //         return showBody.classList.add('show');
-                //     } else {
-                //             return showBody.classList.remove('show');
-                //         }
-                // }
-
-
-
+        //Event Listener below
         var emailMessages = document.getElementsByClassName('email');
         for (var j = 0; j < emailMessages.length; j++){
             emailMessages[j].addEventListener('click', showMessage);
         }
         function showMessage(event){
-            var showBody = this.querySelectorAll('.body')[0]; //'this' refers to the emailMessages[j] variable or the Div with the class name 'main'.
-            if (showBody.classList.contains('show')===false){
+            var showBody = this.querySelectorAll('.body')[0]; //'this' refers to the emailMessages[j] variable or the Div with the class name 'main'. .body to get all elements with class = body in the CSS file. THIS refers to elements (showBodyText). Function will go through all indexes starting with [0].
+            if (showBody.classList.contains('show')===false){ //Refer to the CSS file. Will add or remove show to display the body message.
                 return showBody.classList.add('show');
             } else {
                 return showBody.classList.remove('show');
             }
 
-        }
+        } //closes showMessage function
 
-
-
-
-
-            }
-
-                         
-        }
+            } //closes for loop for newEmail function
+                    
+        } //closes newEmail function
         newEmail(geemails);
 
-
-        //inbox counter
+        //Inbox counter
         var inboxCount = document.getElementById('count');
         inboxCount = geemails.length; //want the length of geemails counted
         var totalCount = document.createTextNode(inboxCount); 
         count.appendChild(totalCount); //append the total count to the inbox span
-   
 
+        //Function for setInterval and to increment new messages
+        function addNewMessage(){
+            var newMessage = getNewMessage();
+            console.log(getNewMessage());
+            console.log(getNewMessage().sender);
+            console.log(getNewMessage().subject);
+            console.log(getNewMessage().date);
+            console.log(getNewMessage().body);  
 
+            var mainContainer = document.createElement('div');
+                mainContainer.className ="email";
+                mainWrap.appendChild(mainContainer);
+                document.body.appendChild(mainWrap);
+            
+            var senderElement = document.createElement('div');
+                senderElement.className = "sender";
+                senderElement.innerHTML = newMessage.sender;
+                mainContainer.appendChild(senderElement);
 
-        
+            var subjectElement = document.createElement('div');
+                subjectElement.className = "subject";
+                subjectElement.innerHTML = newMessage.subject;
+                mainContainer.appendChild(subjectElement);
 
-        };
+            var dateElement = document.createElement('div');
+                dateElement.className = "date";
+                dateElement.innerHTML = newMessage.date;
+                mainContainer.appendChild(dateElement);
+
+            var bodyElement = document.createElement('div');
+                bodyElement.className = "body";
+                bodyElement.innerHTML = newMessage.body;
+                mainContainer.appendChild(bodyElement);
+
+            //inbox count
+            inboxCount++;
+            count.innerHTML = "Inbox: " + inboxCount;
+                         
+            //Event Listener for added messages
+            var emailMessages = document.getElementsByClassName('email');
+
+                for (var j = 0; j < emailMessages.length; j++){
+                emailMessages[j].addEventListener('click', showMessage);
+                }
+            function showMessage(event){
+                var showBody = this.querySelectorAll('.body')[0]; //'this' refers to the emailMessages[j] variable or the Div with the class name 'main'.
+                if (showBody.classList.contains('show')===false){
+                    return showBody.classList.add('show');
+                } else {
+                    return showBody.classList.remove('show');
+                } //closes return showBody remove show
+            } //closes function for showMessage
+                
+        } //closes function for addMessage
+        setInterval(addNewMessage, 3000);
+
+        }; //windows onload
        
-
-  
-                // function showBody(){
-                   
-                //     for (var i = 0; i < body.length; i++){
-                //    if(document.getElementsByClassName("body").style.display === 'none'){
-                //         document.getElementsByClassName("body").style.display = 'block';
-                //         } else{
-                //         document.getElementsByClassName("body").style.display = 'none';
-
-                //         }
-                //     }
-               
-
-                //   } 
-
-		
-
     </script>
 	</head>
 	<body>
