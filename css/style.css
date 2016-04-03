@@ -1,8 +1,59 @@
-div.sender, div.subject, div.date{
-	display: inline;
+div.heading{
+	font-family: Rockwell, sans-serif;
 }
+
+
+#inbox{
+	font-family: Liberation Sans, sans-serif;
+	font-size: 18px;
+	margin-bottom: 15px;
+	float: left;
+	clear: left;
+	width: 100px;
+	margin-right: 5px;
+
+}
+
+#mainWrap{
+	background-color: ivory;
+	float: left;
+	width: 85%;
+}
+
+
+div.email {
+	margin-bottom: 10px;
+	border: 1px solid;
+	border-color: antiquewhite;
+	
+}
+
+div.sender, div.subject, div.date{
+	display: inline-block;
+	margin: 10px;
+	font-family: Liberation Sans, sans-serif;
+	font-size: 14px;
+}
+
+div.email:hover{
+	background-color: honeydew;
+
+}
+
+div.sender{
+	width: 12%;
+}
+
+div.subject{
+	width: 18%;
+}
+
+
+
 div.body{
 	display: none;
+	font-family: Liberation Sans, sans-serif;
+	margin: 15px;
 }
 
 div.body.show{
