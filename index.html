@@ -11,10 +11,23 @@
         var headerDiv = document.createElement('div');
         headerDiv.className = "heading";
         var header = document.createElement('h1');
-        var headerText = document.createTextNode("Your GeeMail Account");
+        var headerSpan = document.createElement('span');
+        headerSpan.id = "header";
+        var headerText = document.createTextNode("GeeMail Account");
         header.appendChild(headerText);
-        headerDiv.appendChild(header);
+        headerSpan.appendChild(header);
+        headerDiv.appendChild(headerSpan);
+        document.body.appendChild(headerSpan);
         document.body.appendChild(headerDiv);
+        
+        var emailIconDiv = document.createElement('div');
+        emailIconDiv.id = "iconDiv";
+        var emailIcon = document.createElement('img');
+        emailIcon.src = "assets/emailmeme.jpg";
+        emailIcon.id = "emailIcon";
+        emailIconDiv.appendChild(emailIcon);
+        headerDiv.appendChild(emailIconDiv);
+
 
         var inboxDiv = document.createElement('div');
         inboxDiv.id = "inbox";
@@ -36,38 +49,38 @@
         		var date = mail[i].date;
         		var body = mail[i].body;
 
-        		var mainContainer = document.createElement('div');
-        		mainContainer.className ="email";
-        		mainWrap.appendChild(mainContainer);
+        		var emailContainer = document.createElement('div');
+        		emailContainer.className ="email";
+        		mainWrap.appendChild(emailContainer);
                 document.body.appendChild(mainWrap);
        		
-        		var senderElement = document.createElement('div');
-        		senderElement.className = "sender";
-        		senderElement.innerHTML = sender;
-        		mainContainer.appendChild(senderElement);
+        		var senderName = document.createElement('div');
+        		senderName.className = "sender";
+        		senderName.innerHTML = sender;
+        		emailContainer.appendChild(senderName);
 
-        		var subjectElement = document.createElement('div');
-        		subjectElement.className = "subject";
-        		subjectElement.innerHTML = subject;
-        		mainContainer.appendChild(subjectElement);
+        		var subjectLine = document.createElement('div');
+        		subjectLine.className = "subject";
+        		subjectLine.innerHTML = subject;
+        		emailContainer.appendChild(subjectLine);
 
-                var dateElement = document.createElement('div');
-                dateElement.className = "date";
-                dateElement.innerHTML = date;
-                mainContainer.appendChild(dateElement);
+                var dateStamp = document.createElement('div');
+                dateStamp.className = "date";
+                dateStamp.innerHTML = date;
+                emailContainer.appendChild(dateStamp);
 
-        		var bodyElement = document.createElement('div');
-        		bodyElement.className = "body";
-        		bodyElement.innerHTML = body;
-        		mainContainer.appendChild(bodyElement);
+        		var bodyText = document.createElement('div');
+        		bodyText.className = "body";
+        		bodyText.innerHTML = body;
+        		emailContainer.appendChild(bodyText);
 
         //Event Listener below
-        var emailMessages = document.getElementsByClassName('email');
-        for (var j = 0; j < emailMessages.length; j++){
-            emailMessages[j].addEventListener('click', showMessage);
+        var expandEmail = document.getElementsByClassName('email');
+        for (var j = 0; j < expandEmail.length; j++){
+            expandEmail[j].addEventListener('click', showMessage);
         }
         function showMessage(event){
-            var showBody = this.querySelectorAll('.body')[0]; //'this' refers to the emailMessages[j] variable or the Div with the class name 'main'. .body to get all elements with class = body in the CSS file. THIS refers to elements (showBodyText). Function will go through all indexes starting with [0].
+            var showBody = this.querySelectorAll('.body')[0]; //'this' refers to the expandEmail[j] variable or the Div with the class name 'main'. .body to get all elements with class = body in the CSS file. THIS refers to elements (showBodyText). Function will go through all indexes starting with [0].
             if (showBody.classList.contains('show')===false){ //Refer to the CSS file. Will add or remove show to display the body message.
                 return showBody.classList.add('show');
             } else {
@@ -88,7 +101,7 @@
         count.appendChild(totalCount); //append the total count to the inbox span
 
         //Function for setInterval and to increment new messages
-        function addNewMessage(){
+        function youveGotMail(){
             var newMessage = getNewMessage();
             console.log(getNewMessage());
             console.log(getNewMessage().sender);
@@ -96,43 +109,43 @@
             console.log(getNewMessage().date);
             console.log(getNewMessage().body);  
 
-            var mainContainer = document.createElement('div');
-                mainContainer.className ="email";
-                mainWrap.appendChild(mainContainer);
+            var emailContainer = document.createElement('div');
+                emailContainer.className ="email";
+                mainWrap.appendChild(emailContainer);
                 document.body.appendChild(mainWrap);
             
-            var senderElement = document.createElement('div');
-                senderElement.className = "sender";
-                senderElement.innerHTML = newMessage.sender;
-                mainContainer.appendChild(senderElement);
+            var senderName = document.createElement('div');
+                senderName.className = "sender";
+                senderName.innerHTML = newMessage.sender;
+                emailContainer.appendChild(senderName);
 
-            var subjectElement = document.createElement('div');
-                subjectElement.className = "subject";
-                subjectElement.innerHTML = newMessage.subject;
-                mainContainer.appendChild(subjectElement);
+            var subjectLine = document.createElement('div');
+                subjectLine.className = "subject";
+                subjectLine.innerHTML = newMessage.subject;
+                emailContainer.appendChild(subjectLine);
 
-            var dateElement = document.createElement('div');
-                dateElement.className = "date";
-                dateElement.innerHTML = newMessage.date;
-                mainContainer.appendChild(dateElement);
+            var dateStamp = document.createElement('div');
+                dateStamp.className = "date";
+                dateStamp.innerHTML = newMessage.date;
+                emailContainer.appendChild(dateStamp);
 
-            var bodyElement = document.createElement('div');
-                bodyElement.className = "body";
-                bodyElement.innerHTML = newMessage.body;
-                mainContainer.appendChild(bodyElement);
+            var bodyText = document.createElement('div');
+                bodyText.className = "body";
+                bodyText.innerHTML = newMessage.body;
+                emailContainer.appendChild(bodyText);
 
             //inbox count
             inboxCount++;
             count.innerHTML = "Inbox: " + inboxCount;
                          
             //Event Listener for added messages
-            var emailMessages = document.getElementsByClassName('email');
+            var expandEmail = document.getElementsByClassName('email');
 
-                for (var j = 0; j < emailMessages.length; j++){
-                emailMessages[j].addEventListener('click', showMessage);
+                for (var j = 0; j < expandEmail.length; j++){
+                expandEmail[j].addEventListener('click', showMessage);
                 }
             function showMessage(event){
-                var showBody = this.querySelectorAll('.body')[0]; //'this' refers to the emailMessages[j] variable or the Div with the class name 'main'.
+                var showBody = this.querySelectorAll('.body')[0]; //'this' refers to the expandEmail[j] variable or the Div with the class name 'main'.
                 if (showBody.classList.contains('show')===false){
                     return showBody.classList.add('show');
                 } else {
@@ -140,8 +153,8 @@
                 } //closes return showBody remove show
             } //closes function for showMessage
                 
-        } //closes function for addMessage
-        setInterval(addNewMessage, 3000);
+        } //closes function for youveGotMail
+        setInterval(youveGotMail, 2000);
 
         }; //windows onload
        

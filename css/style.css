@@ -1,5 +1,28 @@
+#header{
+	position: absolute;
+	margin-left: 125px;
+	font-family: Copperplate Gothic Light, sans-serif;
+	padding-top: 15px;
+	
+}
 div.heading{
-	font-family: Rockwell, sans-serif;
+	margin-bottom: 30px;
+	padding-bottom: 10px;
+	border-bottom-style: groove;
+	border-bottom-color: honeydew;
+	background-color: honeydew;
+}
+#iconDiv{
+	padding-top: 15px;
+	padding-left: 10px;
+}
+
+
+#emailIcon{
+	height: 80px;
+	width: 80px;
+	position: relative;
+	
 }
 
 
@@ -10,7 +33,7 @@ div.heading{
 	float: left;
 	clear: left;
 	width: 100px;
-	margin-right: 5px;
+	margin-right: 15px;
 
 }
 
@@ -32,7 +55,8 @@ div.sender, div.subject, div.date{
 	display: inline-block;
 	margin: 10px;
 	font-family: Liberation Sans, sans-serif;
-	font-size: 14px;
+	font-size: 12px;
+
 }
 
 div.email:hover{
@@ -42,10 +66,11 @@ div.email:hover{
 
 div.sender{
 	width: 12%;
+	margin-left: 12px;
 }
 
 div.subject{
-	width: 18%;
+	width: 20%;
 }
 
 
@@ -54,6 +79,7 @@ div.body{
 	display: none;
 	font-family: Liberation Sans, sans-serif;
 	margin: 15px;
+	font-size: 14px;
 }
 
 div.body.show{
